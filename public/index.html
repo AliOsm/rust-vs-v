@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Simple, real-time conversations.">
+  <title>Relay — a little closer</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Homepage">relay<span class="brand-dot" aria-hidden="true"></span></a>
+      <p class="tagline">A little closer.</p>
+      <div id="session-tools" class="session-tools" hidden>
+        <p id="connection-status" class="connection" role="status" data-connected="false">Connecting…</p>
+        <button id="leave" type="button" class="quiet small">Leave</button>
+      </div>
+    </header>
+
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="eyebrow">Good conversations start here</p>
+        <h1 id="welcome-title">Say hello.</h1>
+        <p>Pick a name, find someone, and make a little room for conversation.</p>
+      </div>
+      <form id="register-form" class="register-form">
+        <label for="username">Your username</label>
+        <input id="username" name="username" autocomplete="off" minlength="3" maxlength="24"
+               pattern="[A-Za-z0-9_]{3,24}" placeholder="e.g. alex" required aria-describedby="username-hint">
+        <p id="username-hint" class="hint">3–24 letters, numbers, or underscores.</p>
+        <button id="join" class="primary" type="submit">Join the conversation <span aria-hidden="true">→</span></button>
+        <p id="register-error" class="error" role="alert"></p>
+      </form>
+      <p class="welcome-note">No password needed. Your session stays in this tab.<br>Temporary accounts and messages reset when the server restarts.</p>
+    </section>
+
+    <section id="chat" class="chat" aria-label="Chat" hidden>
+      <aside id="people-panel" class="people-panel">
+        <div class="people-heading"><h1>People</h1><p id="people-count" class="count">0</p></div>
+        <input id="search" type="search" name="search" placeholder="Find someone" aria-label="Find someone">
+        <p class="list-caption">Start a conversation</p>
+        <ul id="people" class="people" role="list"></ul>
+        <div id="no-people" class="no-people">
+          <p>A quiet moment.</p>
+          <p>Invite someone in to start chatting.</p>
+          <a href="/" target="_blank" rel="noopener">Open another session <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="your-profile"><div id="my-avatar" class="avatar" aria-hidden="true"></div><div><p id="my-name"></p><p class="muted">That’s you</p></div></div>
+      </aside>
+      <div class="conversation">
+        <header class="conversation-heading">
+          <button id="toggle-people" class="quiet mobile-toggle" type="button" aria-expanded="false" aria-controls="people-panel">People</button>
+          <div id="recipient-avatar" class="avatar" hidden aria-hidden="true"></div>
+          <div class="recipient-details"><h2 id="recipient-name">Your next conversation</h2><p id="recipient-status" class="muted">Choose someone to say hello.</p></div>
+        </header>
+        <div id="empty-conversation" class="empty-conversation">
+          <p class="empty-mark" aria-hidden="true">“</p>
+          <h2>Small talk. Big possibilities.</h2>
+          <p>Choose a person from the list.<br>Every conversation starts with a hello.</p>
+        </div>
+        <div id="message-list" class="message-list" role="log" aria-label="Messages" aria-live="polite" aria-relevant="additions" hidden></div>
+        <div class="compose-area">
+          <p id="chat-error" class="error" role="alert"></p>
+          <form id="message-form" class="message-form">
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="1" maxlength="4096" placeholder="Write a message…" disabled></textarea>
+            <button id="send" class="primary" type="submit" disabled>Send <span aria-hidden="true">↑</span></button>
+          </form>
+          <p class="compose-hint">Enter to send · Shift + Enter for a new line <span>Last 100 messages per conversation</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

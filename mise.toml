@@ -1,0 +1,63 @@
+[tools]
+rust = "1.99.0"
+v = "0.5.2"
+python = "3.14.8"
+uv = "0.12.23"
+
+[env]
+VJOBS = "1"
+
+[tasks.setup]
+description = "Install locked test dependencies and bootstrap the pinned V toolchain"
+run = ["uv sync --frozen", "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/setup_v.py"]
+
+[tasks.build]
+description = "Build both apps sequentially with bounded memory"
+sources = ["rust-app/src/**/*.rs", "rust-app/Cargo.toml", "rust-app/Cargo.lock", "v-app/*.v", "v-app/*.h", "v-app/v.mod", "public/*", "scripts/*.py", "toolchains/*", "mise.toml"]
+outputs = [".build/rust/release/rust-chat", ".build/v/v-chat"]
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/apps.py build all"
+
+[tasks."build:rust"]
+description = "Build Rust / Actix Web"
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/apps.py build rust"
+
+[tasks."build:v"]
+description = "Build V / veb + WebSocket reactor"
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/apps.py build v"
+
+[tasks.dev]
+description = "Run both apps; Ctrl+C stops both"
+depends = ["build"]
+run = "python scripts/dev.py"
+
+[tasks."dev:rust"]
+description = "Run Rust on http://localhost:3001"
+depends = ["build:rust"]
+run = ".build/rust/release/rust-chat"
+
+[tasks."dev:v"]
+description = "Run V on http://localhost:3002"
+depends = ["build:v"]
+run = ".build/v/v-chat"
+
+[tasks.check]
+description = "Check formatting, strict Clippy, and V frame ownership"
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/apps.py check"
+
+[tasks.test]
+description = "Check both apps' protocol, delivery, sessions, history, and shutdown"
+depends = ["build"]
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- uv run --frozen python scripts/apps.py test"
+
+[tasks."test:browser"]
+description = "Check chat, reconnect, and mobile layout in Chromium"
+depends = ["build"]
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- uv run --frozen python scripts/apps.py browser"
+
+[tasks.fmt]
+description = "Format Rust and V app sources"
+run = "python scripts/resource_guard.py --report-dir .build/resource-reports --timeout 600 -- python scripts/apps.py fmt"
+
+[tasks."check:results"]
+description = "Recompute benchmark medians from the published trial evidence"
+run = "python benchmarks/check_results.py"

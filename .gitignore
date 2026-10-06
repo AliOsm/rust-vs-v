@@ -1,0 +1,10 @@
+/.build/
+/.toolchains/
+/.venv/
+/.resource-guard.lock
+**/target/
+**/__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example

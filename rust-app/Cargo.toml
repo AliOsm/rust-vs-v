@@ -1,0 +1,20 @@
+[package]
+name = "rust-chat"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+actix-web = { version = "4.15.0", default-features = false, features = ["macros"] }
+actix-ws = "0.4.0"
+futures-util = "0.3.34"
+getrandom = "0.4"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+tokio = { version = "1.53.2", features = ["sync", "time", "macros"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true

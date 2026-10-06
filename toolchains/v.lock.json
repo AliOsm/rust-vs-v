@@ -1,0 +1,50 @@
+{
+  "v": {
+    "url": "https://github.com/vlang/v.git",
+    "commit": "4e8228f907a034e39d5519b79bc70d03ea7e670c",
+    "branch_at_pin": "master"
+  },
+  "vc": {
+    "url": "https://github.com/vlang/vc.git",
+    "commit": "475a2bd7ec4bed7061721816afb46580c4fe0a5b"
+  },
+  "tcc": {
+    "url": "https://github.com/vlang/tccbin.git",
+    "commit": "d6e7ac1b1bcc98aed734a6ecbfa8509f24606c74",
+    "platform": "linux-amd64"
+  },
+  "runtime_patch_sha256": "de3f04520510a5fc01eb90408b88c1dd087887a5147c782e9ad1991f1142280a",
+  "runtime_source_sha256": {
+    "vlib/json2/attr_utils.v": "55fbd6610f1736540ab9511395eaf3364d75bf41bd3482fe673dcf2b8fa258b6",
+    "vlib/json2/check.v": "e07fda13bbb352bf0340c564af08f52247696ef705eb26acd15a66c6b0a2a745",
+    "vlib/json2/constants.v": "f000782cbcb975706ebe89009179b30e3d07f5d1dc658dd1e5aea79192b806a6",
+    "vlib/json2/count.v": "c384cb34422585f899f3df75b625961458385d8e69824319189cc34840714962",
+    "vlib/json2/custom.v": "832884cc408d3b109f0eaba4aa9e0b4c10b766913c50c9334b13596f51b4d1ab",
+    "vlib/json2/decode.v": "0132828520b59eb4431df9426b8a2d78576557ed30bfb97c7ba92577d6f9802b",
+    "vlib/json2/decode_sumtype.v": "96a897e7dace11463025070aa952e68e460db89f6697052c6930576dfd541121",
+    "vlib/json2/decoder2/decode.v": "97295360fa4a9af856e7b313f76aa33b073a34b84e2d1eb969edd8527dca8b5a",
+    "vlib/json2/decoder2/decode_sumtype.v": "946005a476f0d645c99281cb0b949c927d32129ed2dd790c02a79b8b57a7fcc8",
+    "vlib/json2/decoder2/stub.v": "9e6f900ad011c731422bf6c1d1f38631b3acdeb7eecb3e9bddd6bbfe75af4207",
+    "vlib/json2/decoder_deprecated.v": "97847bb93083a9388e170ec63e9686b1c8d93387a36bf54b3238c431875a6899",
+    "vlib/json2/encode.v": "adf4fa8d4113b08b3b9e2b94fb1c3d7e4b4a156e3ebc6d4829e0a6968a82f4a6",
+    "vlib/json2/encoder.v": "4a65994f26e2ada90e75248333f60ba18ebdc9a295af0e6c30a5d5255d6374df",
+    "vlib/json2/json2.v": "e7499a4ba74d3c1dc796a93f1670a72117af2174a5cde56cb31d9a9d67dd1a6c",
+    "vlib/json2/scanner.v": "92124f8cb78a49b9c514c67db633447b23bff9b060b604d3c024d56a6b1da9b2",
+    "vlib/json2/strict/strict.v": "1f414744dc91f9570e4bf8b6f4756152772f0d5481e5d0be48009a5c638be5fe",
+    "vlib/json2/types.v": "c8c196fc962b8c8940cef12e3dc4da64e90bc32d23e56bea62130e0167f46002",
+    "vlib/net/websocket/events.v": "61a44256f8d3fe596753db66f6f8c864bd1abd84d30ff7bd0cb8788503e15700",
+    "vlib/net/websocket/frame_decoder.v": "56284a1b8cc249b0fede274a3f9e37acbaf4be155c30994798787b0e42caaece",
+    "vlib/net/websocket/frame_unmask.c.v": "9fc312d3a48fe003aaf6baba0681984829b126e6f5e2696faafdc9b67aecbca7",
+    "vlib/net/websocket/frame_utf8.c.v": "e9cdddbe5d14d4ffa00aa626b0ef9c1cd8336be1e620ecb46ed728bb26dabdae",
+    "vlib/net/websocket/handshake.v": "2df33cf617b1de09a47a565112fac1454ee31b2584de2028ff1a4d7e20c1c3b3",
+    "vlib/net/websocket/io.v": "a5dc2ce8ec800152bf04ec554b91bc1cea753d8ce575daf0b90bf4469d894fd6",
+    "vlib/net/websocket/message.v": "1fb4e21717f68ad50ff885f60bbc69a6a48bf142407c152cb76aad0dfd91105f",
+    "vlib/net/websocket/reactor_linux.c.v": "02c66546018f84ef9d7875fdaea99301e0548a6f6d1c27d34f1a29f8e22a0106",
+    "vlib/net/websocket/uri.v": "dbea6e9d8a494124060a9d1b9d8333cf05a3ec854d85667f5eaae6564edf370d",
+    "vlib/net/websocket/utils.v": "bdcf03c3dd38afabeeacc56f3fb26c3da0835463af51a3b84c34894716b66be8",
+    "vlib/net/websocket/websocket_client.v": "f1cbf0c08dae115ff839dd8ed6cd789442e843979a36de0df7cb9f69e43596c9",
+    "vlib/net/websocket/websocket_nix.c.v": "e2eb884a88fdade2d9644a949148bff5c41c37c5118e7401987776e62828082e",
+    "vlib/net/websocket/websocket_server.v": "76275d24c8649d65ad14f90cb5db4763216b45623b95ce71abf43c02b248dd4b",
+    "vlib/net/websocket/websocket_windows.c.v": "6c3147ad7675abba424e513284526b52b766912cb2387f99c47700a730711266"
+  }
+}

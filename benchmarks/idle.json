@@ -1,0 +1,50 @@
+[
+  {
+    "app": "rust",
+    "case": {
+      "name": "idle_256_sockets",
+      "kind": "idle",
+      "pairs": 128,
+      "bytes": 64,
+      "window": 1
+    },
+    "runs": 4,
+    "minimum": 0.0,
+    "maximum": 0.0,
+    "operations_per_second": 0.0,
+    "p50_ms": 0.0,
+    "p95_ms": 0.0,
+    "p99_ms": 0.0,
+    "cpu_us_per_operation": 0.0,
+    "server_cpu_percent": 0.16657687618659434,
+    "client_cpu_percent": 0.0,
+    "mean_rss_mib": 17.880859375,
+    "peak_rss_mib": 17.880859375,
+    "peak_vms_mib": 203.1484375,
+    "peak_threads": 4.0
+  },
+  {
+    "app": "v-reactor-pooled",
+    "case": {
+      "name": "idle_256_sockets",
+      "kind": "idle",
+      "pairs": 128,
+      "bytes": 64,
+      "window": 1
+    },
+    "runs": 4,
+    "minimum": 0.0,
+    "maximum": 0.0,
+    "operations_per_second": 0.0,
+    "p50_ms": 0.0,
+    "p95_ms": 0.0,
+    "p99_ms": 0.0,
+    "cpu_us_per_operation": 0.0,
+    "server_cpu_percent": 0.4986448651680577,
+    "client_cpu_percent": 0.0,
+    "mean_rss_mib": 45.11179762620192,
+    "peak_rss_mib": 45.11328125,
+    "peak_vms_mib": 116.5234375,
+    "peak_threads": 10.0
+  }
+]

@@ -1,0 +1,4 @@
+* text=auto
+*.woff2 binary
+toolchains/v-runtime.patch linguist-generated=true -whitespace
+benchmarks/*.json linguist-generated=true

@@ -1,0 +1,3395 @@
+{
+  "note": "Recorded before the source cleanup; numerical trial fields are copied unchanged. Local paths, logs, build manifests, and per-sample traces are omitted.",
+  "original_results_sha256": "d82b3b40b892f505905c1164ca042d9515e72347154834ba0187e11345259f7d",
+  "metadata": {
+    "created_at": "2026-10-06T10:34:42.809903+00:00",
+    "trials": 8,
+    "seconds": 6,
+    "warmup": 2,
+    "server_cpus": [
+      0,
+      1
+    ],
+    "client_cpus": [
+      2,
+      3,
+      4
+    ],
+    "controller_cpu": 5,
+    "cases": [
+      {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      }
+    ],
+    "apps": [
+      "rust",
+      "v-reactor-pooled"
+    ],
+    "machine": {
+      "cpu": "Intel(R) Core(TM) i5-8500 CPU @ 3.00GHz",
+      "os": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+      "cpu_count": 6,
+      "ram_gib": 15.031963348388672,
+      "swap_used_gib": 8.398571014404297,
+      "load_average": [
+        4.0068359375,
+        3.3701171875,
+        3.2578125
+      ],
+      "governors": [
+        "powersave"
+      ]
+    },
+    "versions": {
+      "rust": "rustc 1.99.0 (b940084d7 2026-09-28)",
+      "oha": "oha 1.16.0",
+      "python": "3.14.8",
+      "mise": "2026.9.17 linux-x64 (2026-09-29)"
+    },
+    "binary_hashes": {
+      "rust": "7018e9a7e91b46e9dbb73b1f58e0e4edc443a4148ab326cc49a36ff9c7656216",
+      "v-reactor-pooled": "8dba4015ef90f75de74e0485e8230aaa856758bf26b0bafcd23ddd75262d84a7"
+    },
+    "loadgen_sha256": "c9b8cf429c99311e94630ccbc25b56bf9e3657937ec1a53ade8dd78c4b237581",
+    "source_hashes": {
+      "rust-app/src/main.rs": "c1df6f10bafb36a06e4101003c4dc072488b3a24c11af6995d2450173824087d",
+      "rust-app/Cargo.lock": "fdcfc5f514c5ef230d7b63c73ea740c74ce813c74b25f34e3ecc3200fa76823c",
+      "rust-app/Cargo.toml": "461f3a4741e8f912a0020977caf54d7424047ccaaf83437ca4c1d995d999ff97",
+      "benchmarks/loadgen/src/main.rs": "ebe8e96c0b383c1726c81aaa44aa63c7f873c870b46561d5a9736412daf3fb47",
+      "benchmarks/loadgen/Cargo.lock": "a960225ae4e78f62ac4939884b5c5a980f0779776560aa875fece00b8a71ee29"
+    },
+    "policy": "Williams order for four builds; alternating order for two builds. Every build occupies each position equally over a complete order cycle. One fresh server at a time. Require three quiet seconds before each run. Repeat a whole matched block for compiler overlap or more than 125% of one CPU core of unrelated work averaged across any measurement. Retain all attempts. Never retry delivery or server failures. At most three new attempts per block per invocation.",
+    "background_cpu_limit_percent": 125.0,
+    "background_estimator": "Host user+nice+system+steal CPU minus server, client and controller. IRQ/softirq excluded during traffic because benchmark network activity can cause them."
+  },
+  "blocks": [
+    {
+      "trial": 1,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.001461977139115,
+          "server_cpu_seconds": 4.390000000000001,
+          "server_user_cpu_seconds": 1.6099999999999999,
+          "server_system_cpu_seconds": 2.7800000000000002,
+          "thread_counters": {
+            "voluntary": 189258,
+            "involuntary": 252,
+            "run_ns": 4391357329,
+            "runqueue_ns": 412469124,
+            "timeslices": 189510
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 73.14884301062763,
+          "client_cpu_percent": 56.486236402284206,
+          "cpu_us_per_operation": 46.38826662158165,
+          "mean_rss_mib": 4.0703125,
+          "peak_rss_mib": 4.0703125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 11.0,
+          "controller_cpu_seconds": 0.4500000000000002,
+          "measured_client_cpu_seconds": 3.39,
+          "background_cpu_seconds": 2.769999999999999,
+          "background_cpu_percent": 46.15542030511126,
+          "messages": 94636,
+          "elapsed_seconds": 6.000658907,
+          "messages_per_second": 15770.934736784231,
+          "p50_ms": 0.049849,
+          "p95_ms": 0.084354,
+          "p99_ms": 0.141244,
+          "max_ms": 3.802058,
+          "errors": 0,
+          "operations": 94636,
+          "operations_per_second": 15770.934736784231
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.004205436911434,
+          "server_cpu_seconds": 3.87,
+          "server_user_cpu_seconds": 1.0699999999999998,
+          "server_system_cpu_seconds": 2.8,
+          "thread_counters": {
+            "voluntary": 194926,
+            "involuntary": 473,
+            "run_ns": 3875930148,
+            "runqueue_ns": 600872935,
+            "timeslices": 195398
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 64.4548232178866,
+          "client_cpu_percent": 59.291775363223834,
+          "cpu_us_per_operation": 39.87388724035608,
+          "mean_rss_mib": 24.00217782079646,
+          "peak_rss_mib": 24.09765625,
+          "peak_vms_mib": 156.46875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 13.419999999925494,
+          "controller_cpu_seconds": 0.4700000000000002,
+          "measured_client_cpu_seconds": 3.5599999999999996,
+          "background_cpu_seconds": 5.519999999925494,
+          "background_cpu_percent": 91.93556179791517,
+          "messages": 97056,
+          "elapsed_seconds": 6.003339015,
+          "messages_per_second": 16167.003022400528,
+          "p50_ms": 0.046704,
+          "p95_ms": 0.083627,
+          "p99_ms": 0.13841,
+          "max_ms": 4.08267,
+          "errors": 0,
+          "operations": 97056,
+          "operations_per_second": 16167.003022400528
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.00418128632009,
+          "server_cpu_seconds": 10.450000000000001,
+          "server_user_cpu_seconds": 3.33,
+          "server_system_cpu_seconds": 7.12,
+          "thread_counters": {
+            "voluntary": 26353,
+            "involuntary": 6679,
+            "run_ns": 10452977517,
+            "runqueue_ns": 1108565418,
+            "timeslices": 33032
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 174.04537774049646,
+          "client_cpu_percent": 240.99871922535726,
+          "cpu_us_per_operation": 25.684447514015844,
+          "mean_rss_mib": 71.62926462155963,
+          "peak_rss_mib": 73.3125,
+          "peak_vms_mib": 205.3828125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.56000000005588,
+          "controller_cpu_seconds": 0.5100000000000016,
+          "measured_client_cpu_seconds": 14.469999999999999,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 406861,
+          "elapsed_seconds": 6.003180827,
+          "messages_per_second": 67774.23697951852,
+          "p50_ms": 1.684654,
+          "p95_ms": 3.231173,
+          "p99_ms": 4.962763,
+          "max_ms": 31.986134,
+          "errors": 0,
+          "operations": 406861,
+          "operations_per_second": 67774.23697951852
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.004104349762201,
+          "server_cpu_seconds": 10.72,
+          "server_user_cpu_seconds": 4.59,
+          "server_system_cpu_seconds": 6.130000000000001,
+          "thread_counters": {
+            "voluntary": 8577,
+            "involuntary": 5089,
+            "run_ns": 10722388469,
+            "runqueue_ns": 966791581,
+            "timeslices": 13666
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 178.5445317988948,
+          "client_cpu_percent": 216.35200261825028,
+          "cpu_us_per_operation": 29.474193583863983,
+          "mean_rss_mib": 15.821831597222221,
+          "peak_rss_mib": 15.828125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.270000000018626,
+          "controller_cpu_seconds": 0.4800000000000004,
+          "measured_client_cpu_seconds": 12.989999999999997,
+          "background_cpu_seconds": 0.08000000001862873,
+          "background_cpu_percent": 1.3324218794064964,
+          "messages": 363708,
+          "elapsed_seconds": 6.003204676,
+          "messages_per_second": 60585.6404420218,
+          "p50_ms": 2.010227,
+          "p95_ms": 3.793092,
+          "p99_ms": 5.515259,
+          "max_ms": 29.770893,
+          "errors": 0,
+          "operations": 363708,
+          "operations_per_second": 60585.6404420218
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.009079584851861,
+          "server_cpu_seconds": 10.809999999999999,
+          "server_user_cpu_seconds": 6.4,
+          "server_system_cpu_seconds": 4.41,
+          "thread_counters": {
+            "voluntary": 6759,
+            "involuntary": 5170,
+            "run_ns": 10823290747,
+            "runqueue_ns": 970636777,
+            "timeslices": 11929
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 179.89443886299424,
+          "client_cpu_percent": 243.7977362944372,
+          "cpu_us_per_operation": 8.901104692141995,
+          "mean_rss_mib": 19.6328125,
+          "peak_rss_mib": 19.6328125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.679999999701977,
+          "controller_cpu_seconds": 0.46999999999999975,
+          "measured_client_cpu_seconds": 14.650000000000002,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1214456,
+          "elapsed_seconds": 6.008226591,
+          "messages_per_second": 202132.19019056135,
+          "p50_ms": 4.719681,
+          "p95_ms": 9.039108,
+          "p99_ms": 13.459561,
+          "max_ms": 43.483956,
+          "errors": 0,
+          "operations": 1214456,
+          "operations_per_second": 202132.19019056135
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009630356915295,
+          "server_cpu_seconds": 9.99,
+          "server_user_cpu_seconds": 4.49,
+          "server_system_cpu_seconds": 5.5,
+          "thread_counters": {
+            "voluntary": 55656,
+            "involuntary": 6364,
+            "run_ns": 9988222531,
+            "runqueue_ns": 1536964922,
+            "timeslices": 62020
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 166.23318584818588,
+          "client_cpu_percent": 259.2505541055792,
+          "cpu_us_per_operation": 7.547825561364804,
+          "mean_rss_mib": 73.36328125,
+          "peak_rss_mib": 73.36328125,
+          "peak_vms_mib": 205.38671875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.62000000011176,
+          "controller_cpu_seconds": 0.4599999999999991,
+          "measured_client_cpu_seconds": 15.580000000000002,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1323560,
+          "elapsed_seconds": 6.008782854,
+          "messages_per_second": 220270.8988092183,
+          "p50_ms": 4.274092,
+          "p95_ms": 8.005597,
+          "p99_ms": 11.015762,
+          "max_ms": 37.421077,
+          "errors": 0,
+          "operations": 1323560,
+          "operations_per_second": 220270.8988092183
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009509594645351,
+          "server_cpu_seconds": 9.41,
+          "server_user_cpu_seconds": 5.31,
+          "server_system_cpu_seconds": 4.1,
+          "thread_counters": {
+            "voluntary": 37501,
+            "involuntary": 10979,
+            "run_ns": 9410842992,
+            "runqueue_ns": 1988036851,
+            "timeslices": 48480
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 156.58515643913083,
+          "client_cpu_percent": 218.81985198454524,
+          "cpu_us_per_operation": 9.758090608174813,
+          "mean_rss_mib": 49.18359375,
+          "peak_rss_mib": 49.18359375,
+          "peak_vms_mib": 181.30859375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 25.68999999994412,
+          "controller_cpu_seconds": 0.4900000000000002,
+          "measured_client_cpu_seconds": 13.15,
+          "background_cpu_seconds": 2.63999999994412,
+          "background_cpu_percent": 43.930373325245,
+          "messages": 964328,
+          "elapsed_seconds": 6.007997407,
+          "messages_per_second": 160507.3928421554,
+          "p50_ms": 1.243347,
+          "p95_ms": 3.330585,
+          "p99_ms": 4.784737,
+          "max_ms": 32.807825,
+          "errors": 0,
+          "operations": 964328,
+          "operations_per_second": 160507.3928421554
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.0068923202343285,
+          "server_cpu_seconds": 10.899999999999999,
+          "server_user_cpu_seconds": 6.889999999999999,
+          "server_system_cpu_seconds": 4.01,
+          "thread_counters": {
+            "voluntary": 6431,
+            "involuntary": 4885,
+            "run_ns": 10900184394,
+            "runqueue_ns": 829409204,
+            "timeslices": 11316
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 181.45822197083749,
+          "client_cpu_percent": 241.38937785111412,
+          "cpu_us_per_operation": 10.547788254602319,
+          "mean_rss_mib": 12.820136542792794,
+          "peak_rss_mib": 12.90234375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.169999999925494,
+          "controller_cpu_seconds": 0.4900000000000002,
+          "measured_client_cpu_seconds": 14.5,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1033392,
+          "elapsed_seconds": 6.006060081,
+          "messages_per_second": 172058.21887614913,
+          "p50_ms": 1.277824,
+          "p95_ms": 2.532114,
+          "p99_ms": 3.836654,
+          "max_ms": 91.127455,
+          "errors": 0,
+          "operations": 1033392,
+          "operations_per_second": 172058.21887614913
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.001480375882238,
+          "server_cpu_seconds": 4.02,
+          "server_user_cpu_seconds": 1.1400000000000001,
+          "server_system_cpu_seconds": 2.88,
+          "thread_counters": {
+            "voluntary": 201818,
+            "involuntary": 440,
+            "run_ns": 4025340305,
+            "runqueue_ns": 482563402,
+            "timeslices": 202257
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 66.98347321362432,
+          "client_cpu_percent": 59.15207211650906,
+          "cpu_us_per_operation": 39.99562236969088,
+          "mean_rss_mib": 23.985792311946902,
+          "peak_rss_mib": 24.12890625,
+          "peak_vms_mib": 156.46875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 11.96999999973923,
+          "controller_cpu_seconds": 0.47000000000000064,
+          "measured_client_cpu_seconds": 3.5500000000000003,
+          "background_cpu_seconds": 3.9299999997392288,
+          "background_cpu_percent": 65.48384321195927,
+          "messages": 100511,
+          "elapsed_seconds": 6.000627113,
+          "messages_per_second": 16750.082634238166,
+          "p50_ms": 0.046251,
+          "p95_ms": 0.080043,
+          "p99_ms": 0.136937,
+          "max_ms": 3.867612,
+          "errors": 0,
+          "operations": 100511,
+          "operations_per_second": 16750.082634238166
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.001425221096724,
+          "server_cpu_seconds": 4.470000000000001,
+          "server_user_cpu_seconds": 1.52,
+          "server_system_cpu_seconds": 2.95,
+          "thread_counters": {
+            "voluntary": 198366,
+            "involuntary": 272,
+            "run_ns": 4471502506,
+            "runqueue_ns": 341570938,
+            "timeslices": 198638
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 74.48230770728715,
+          "client_cpu_percent": 57.986226134532274,
+          "cpu_us_per_operation": 45.06638974865658,
+          "mean_rss_mib": 4.0546875,
+          "peak_rss_mib": 4.0546875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 10.330000000074506,
+          "controller_cpu_seconds": 0.46000000000000085,
+          "measured_client_cpu_seconds": 3.48,
+          "background_cpu_seconds": 1.9200000000745043,
+          "background_cpu_percent": 31.992400627190285,
+          "messages": 99187,
+          "elapsed_seconds": 6.000646348,
+          "messages_per_second": 16529.386044064864,
+          "p50_ms": 0.049274,
+          "p95_ms": 0.075443,
+          "p99_ms": 0.120325,
+          "max_ms": 3.00933,
+          "errors": 0,
+          "operations": 99187,
+          "operations_per_second": 16529.386044064864
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.0034101461060345,
+          "server_cpu_seconds": 10.82,
+          "server_user_cpu_seconds": 4.65,
+          "server_system_cpu_seconds": 6.17,
+          "thread_counters": {
+            "voluntary": 8393,
+            "involuntary": 3324,
+            "run_ns": 10809401127,
+            "runqueue_ns": 917502128,
+            "timeslices": 11717
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 180.23089771766016,
+          "client_cpu_percent": 216.71016444609603,
+          "cpu_us_per_operation": 29.090869983706963,
+          "mean_rss_mib": 18.033345170454545,
+          "peak_rss_mib": 18.03515625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.639999999664724,
+          "controller_cpu_seconds": 0.5,
+          "measured_client_cpu_seconds": 13.010000000000002,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 371938,
+          "elapsed_seconds": 6.002566995,
+          "messages_per_second": 61963.15681437888,
+          "p50_ms": 1.967437,
+          "p95_ms": 3.591782,
+          "p99_ms": 5.484673,
+          "max_ms": 29.881614,
+          "errors": 0,
+          "operations": 371938,
+          "operations_per_second": 61963.15681437888
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.003841127734631,
+          "server_cpu_seconds": 10.370000000000001,
+          "server_user_cpu_seconds": 3.29,
+          "server_system_cpu_seconds": 7.08,
+          "thread_counters": {
+            "voluntary": 29887,
+            "involuntary": 7515,
+            "run_ns": 10366609940,
+            "runqueue_ns": 1235347669,
+            "timeslices": 37402
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 172.72275830377956,
+          "client_cpu_percent": 239.5133331155593,
+          "cpu_us_per_operation": 25.7898611276909,
+          "mean_rss_mib": 71.90559895833333,
+          "peak_rss_mib": 73.328125,
+          "peak_vms_mib": 205.38671875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.959999999497086,
+          "controller_cpu_seconds": 0.5099999999999998,
+          "measured_client_cpu_seconds": 14.38,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 402096,
+          "elapsed_seconds": 6.002959461,
+          "messages_per_second": 66982.96108983169,
+          "p50_ms": 1.684624,
+          "p95_ms": 3.307756,
+          "p99_ms": 5.00216,
+          "max_ms": 23.217782,
+          "errors": 0,
+          "operations": 402096,
+          "operations_per_second": 66982.96108983169
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009416949003935,
+          "server_cpu_seconds": 10.459999999999999,
+          "server_user_cpu_seconds": 4.65,
+          "server_system_cpu_seconds": 5.8100000000000005,
+          "thread_counters": {
+            "voluntary": 54552,
+            "involuntary": 8335,
+            "run_ns": 10456325646,
+            "runqueue_ns": 1027704485,
+            "timeslices": 62887
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 174.0601474113683,
+          "client_cpu_percent": 267.5800354086808,
+          "cpu_us_per_operation": 7.713955326906511,
+          "mean_rss_mib": 73.2734375,
+          "peak_rss_mib": 73.2734375,
+          "peak_vms_mib": 205.45703125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.550000000279397,
+          "controller_cpu_seconds": 0.4800000000000004,
+          "measured_client_cpu_seconds": 16.08,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1355984,
+          "elapsed_seconds": 6.008563047,
+          "messages_per_second": 225675.25536359742,
+          "p50_ms": 4.248803,
+          "p95_ms": 7.492949,
+          "p99_ms": 10.409032,
+          "max_ms": 36.419942,
+          "errors": 0,
+          "operations": 1355984,
+          "operations_per_second": 225675.25536359742
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.031356145162135,
+          "server_cpu_seconds": 10.48,
+          "server_user_cpu_seconds": 6.210000000000001,
+          "server_system_cpu_seconds": 4.27,
+          "thread_counters": {
+            "voluntary": 6948,
+            "involuntary": 6393,
+            "run_ns": 10480424608,
+            "runqueue_ns": 1268483999,
+            "timeslices": 13341
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 173.75860001910524,
+          "client_cpu_percent": 233.1150683462423,
+          "cpu_us_per_operation": 9.052462822709934,
+          "mean_rss_mib": 19.484375,
+          "peak_rss_mib": 19.484375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.350000000093132,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 14.059999999999999,
+          "background_cpu_seconds": 0.34000000009313425,
+          "background_cpu_percent": 5.637206490713613,
+          "messages": 1157696,
+          "elapsed_seconds": 6.007859675,
+          "messages_per_second": 192696.9108179112,
+          "p50_ms": 4.869383,
+          "p95_ms": 9.741522,
+          "p99_ms": 13.222892,
+          "max_ms": 86.996529,
+          "errors": 0,
+          "operations": 1157696,
+          "operations_per_second": 192696.9108179112
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": false,
+      "excluded_reason": "Compiler overlap or excess background CPU; replace whole matched block",
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.006368940230459,
+          "server_cpu_seconds": 10.839999999999998,
+          "server_user_cpu_seconds": 6.709999999999999,
+          "server_system_cpu_seconds": 4.13,
+          "thread_counters": {
+            "voluntary": 4336,
+            "involuntary": 4852,
+            "run_ns": 10834479302,
+            "runqueue_ns": 903492621,
+            "timeslices": 9188
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 180.47509415204317,
+          "client_cpu_percent": 230.08909604992965,
+          "cpu_us_per_operation": 11.040675314516653,
+          "mean_rss_mib": 12.871867961711711,
+          "peak_rss_mib": 13.0078125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.109999999869615,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 13.820000000000002,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 981824,
+          "elapsed_seconds": 6.005581164,
+          "messages_per_second": 163485.2603250905,
+          "p50_ms": 1.351211,
+          "p95_ms": 2.619079,
+          "p99_ms": 4.051125,
+          "max_ms": 20.526572,
+          "errors": 0,
+          "operations": 981824,
+          "operations_per_second": 163485.2603250905
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.0046909768134356,
+          "server_cpu_seconds": 6.82,
+          "server_user_cpu_seconds": 3.6400000000000006,
+          "server_system_cpu_seconds": 3.1799999999999997,
+          "thread_counters": {
+            "voluntary": 44799,
+            "involuntary": 24921,
+            "run_ns": 6824473234,
+            "runqueue_ns": 4370432994,
+            "timeslices": 69718
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 113.57786814233748,
+          "client_cpu_percent": 148.88359841532213,
+          "cpu_us_per_operation": 10.716261061946904,
+          "mean_rss_mib": 48.85546875,
+          "peak_rss_mib": 48.85546875,
+          "peak_vms_mib": 181.03515625,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 27.860000000335276,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 8.94,
+          "background_cpu_seconds": 11.630000000335277,
+          "background_cpu_percent": 193.68190711634384,
+          "messages": 636416,
+          "elapsed_seconds": 6.003751848,
+          "messages_per_second": 106003.04877890748,
+          "p50_ms": 2.044538,
+          "p95_ms": 4.354586,
+          "p99_ms": 6.594915,
+          "max_ms": 44.159364,
+          "errors": 0,
+          "operations": 636416,
+          "operations_per_second": 106003.04877890748
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 2,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.009527150075883,
+          "server_cpu_seconds": 10.87,
+          "server_user_cpu_seconds": 6.739999999999999,
+          "server_system_cpu_seconds": 4.13,
+          "thread_counters": {
+            "voluntary": 5326,
+            "involuntary": 4968,
+            "run_ns": 10867533143,
+            "runqueue_ns": 822340662,
+            "timeslices": 10294
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 180.8794557132959,
+          "client_cpu_percent": 240.45153036404102,
+          "cpu_us_per_operation": 10.470689774750127,
+          "mean_rss_mib": 12.879048295454545,
+          "peak_rss_mib": 12.96484375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.209999999962747,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 14.45,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1038136,
+          "elapsed_seconds": 6.008665384,
+          "messages_per_second": 172773.14239604192,
+          "p50_ms": 1.268447,
+          "p95_ms": 2.456438,
+          "p99_ms": 3.918683,
+          "max_ms": 88.351531,
+          "errors": 0,
+          "operations": 1038136,
+          "operations_per_second": 172773.14239604192
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.007095912005752,
+          "server_cpu_seconds": 10.57,
+          "server_user_cpu_seconds": 5.98,
+          "server_system_cpu_seconds": 4.59,
+          "thread_counters": {
+            "voluntary": 33232,
+            "involuntary": 7405,
+            "run_ns": 10560874633,
+            "runqueue_ns": 948127324,
+            "timeslices": 40637
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 175.9585689130558,
+          "client_cpu_percent": 252.86761227902724,
+          "cpu_us_per_operation": 9.503754747381747,
+          "mean_rss_mib": 48.88671875,
+          "peak_rss_mib": 48.88671875,
+          "peak_vms_mib": 181.07421875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 25.009999999776483,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 15.190000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1112192,
+          "elapsed_seconds": 6.006293981,
+          "messages_per_second": 185171.08944687867,
+          "p50_ms": 1.181286,
+          "p95_ms": 2.539434,
+          "p99_ms": 4.150848,
+          "max_ms": 30.167128,
+          "errors": 0,
+          "operations": 1112192,
+          "operations_per_second": 185171.08944687867
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.001418991945684,
+          "server_cpu_seconds": 4.359999999999999,
+          "server_user_cpu_seconds": 1.5599999999999998,
+          "server_system_cpu_seconds": 2.8,
+          "thread_counters": {
+            "voluntary": 188125,
+            "involuntary": 327,
+            "run_ns": 4354213569,
+            "runqueue_ns": 463920157,
+            "timeslices": 188452
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 72.64948516094975,
+          "client_cpu_percent": 56.819895504320804,
+          "cpu_us_per_operation": 46.34994206257242,
+          "mean_rss_mib": 4.16015625,
+          "peak_rss_mib": 4.16015625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 11.34000000031665,
+          "controller_cpu_seconds": 0.4400000000000013,
+          "measured_client_cpu_seconds": 3.4100000000000006,
+          "background_cpu_seconds": 3.1300000003166484,
+          "background_cpu_percent": 52.154332242380065,
+          "messages": 94067,
+          "elapsed_seconds": 6.000632377,
+          "messages_per_second": 15676.181123934899,
+          "p50_ms": 0.050208,
+          "p95_ms": 0.084517,
+          "p99_ms": 0.133814,
+          "max_ms": 3.814345,
+          "errors": 0,
+          "operations": 94067,
+          "operations_per_second": 15676.181123934899
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.0014926781877875,
+          "server_cpu_seconds": 4.14,
+          "server_user_cpu_seconds": 1.1800000000000002,
+          "server_system_cpu_seconds": 2.96,
+          "thread_counters": {
+            "voluntary": 211318,
+            "involuntary": 303,
+            "run_ns": 4144290427,
+            "runqueue_ns": 334719841,
+            "timeslices": 211621
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 68.98283847028061,
+          "client_cpu_percent": 61.81795428133843,
+          "cpu_us_per_operation": 39.32594942720899,
+          "mean_rss_mib": 24.16717367256637,
+          "peak_rss_mib": 24.27734375,
+          "peak_vms_mib": 156.4609375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 10.390000000130385,
+          "controller_cpu_seconds": 0.4599999999999973,
+          "measured_client_cpu_seconds": 3.71,
+          "background_cpu_seconds": 2.080000000130388,
+          "background_cpu_percent": 34.65804445100924,
+          "messages": 105274,
+          "elapsed_seconds": 6.000659929,
+          "messages_per_second": 17543.737063190605,
+          "p50_ms": 0.045897,
+          "p95_ms": 0.070862,
+          "p99_ms": 0.121182,
+          "max_ms": 3.167036,
+          "errors": 0,
+          "operations": 105274,
+          "operations_per_second": 17543.737063190605
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.006789651233703,
+          "server_cpu_seconds": 10.590000000000002,
+          "server_user_cpu_seconds": 3.46,
+          "server_system_cpu_seconds": 7.130000000000001,
+          "thread_counters": {
+            "voluntary": 19325,
+            "involuntary": 7261,
+            "run_ns": 10581184065,
+            "runqueue_ns": 1038728239,
+            "timeslices": 26586
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 176.3004968523407,
+          "client_cpu_percent": 249.05150452417533,
+          "cpu_us_per_operation": 25.36381142161888,
+          "mean_rss_mib": 71.79804322429906,
+          "peak_rss_mib": 73.26953125,
+          "peak_vms_mib": 205.39453125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.600000000093132,
+          "controller_cpu_seconds": 0.5199999999999996,
+          "measured_client_cpu_seconds": 14.96,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 417524,
+          "elapsed_seconds": 6.003609805,
+          "messages_per_second": 69545.49238897447,
+          "p50_ms": 1.670733,
+          "p95_ms": 3.075322,
+          "p99_ms": 4.702858,
+          "max_ms": 16.344206,
+          "errors": 0,
+          "operations": 417524,
+          "operations_per_second": 69545.49238897447
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.0040031163953245,
+          "server_cpu_seconds": 10.879999999999999,
+          "server_user_cpu_seconds": 4.6899999999999995,
+          "server_system_cpu_seconds": 6.19,
+          "thread_counters": {
+            "voluntary": 8778,
+            "involuntary": 4636,
+            "run_ns": 10885229458,
+            "runqueue_ns": 854333606,
+            "timeslices": 13414
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 181.21243092445494,
+          "client_cpu_percent": 220.68609464605035,
+          "cpu_us_per_operation": 28.878336735208478,
+          "mean_rss_mib": 18.110798773364486,
+          "peak_rss_mib": 18.11328125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.119999999646097,
+          "controller_cpu_seconds": 0.5000000000000036,
+          "measured_client_cpu_seconds": 13.249999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 376753,
+          "elapsed_seconds": 6.003147895,
+          "messages_per_second": 62759.24008365615,
+          "p50_ms": 1.961743,
+          "p95_ms": 3.552314,
+          "p99_ms": 5.359046,
+          "max_ms": 16.54912,
+          "errors": 0,
+          "operations": 376753,
+          "operations_per_second": 62759.24008365615
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.012252747546881,
+          "server_cpu_seconds": 10.899999999999999,
+          "server_user_cpu_seconds": 6.4,
+          "server_system_cpu_seconds": 4.5,
+          "thread_counters": {
+            "voluntary": 6602,
+            "involuntary": 4866,
+            "run_ns": 10898456795,
+            "runqueue_ns": 875773968,
+            "timeslices": 11468
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 181.2964367548822,
+          "client_cpu_percent": 240.84150497345814,
+          "cpu_us_per_operation": 8.878650836059377,
+          "mean_rss_mib": 19.188245738636365,
+          "peak_rss_mib": 19.19140625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.81000000005588,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 14.479999999999997,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1227664,
+          "elapsed_seconds": 6.009150438,
+          "messages_per_second": 204299.0956319939,
+          "p50_ms": 4.603699,
+          "p95_ms": 8.738579,
+          "p99_ms": 12.777226,
+          "max_ms": 38.659588,
+          "errors": 0,
+          "operations": 1227664,
+          "operations_per_second": 204299.0956319939
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.0101849981583655,
+          "server_cpu_seconds": 9.940000000000001,
+          "server_user_cpu_seconds": 4.47,
+          "server_system_cpu_seconds": 5.470000000000001,
+          "thread_counters": {
+            "voluntary": 51337,
+            "involuntary": 7416,
+            "run_ns": 9932434219,
+            "runqueue_ns": 1666991353,
+            "timeslices": 58753
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 165.38592411125123,
+          "client_cpu_percent": 261.05685606695494,
+          "cpu_us_per_operation": 7.553926217747624,
+          "mean_rss_mib": 73.38671875,
+          "peak_rss_mib": 73.38671875,
+          "peak_vms_mib": 205.453125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.100000000093132,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 15.690000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1315872,
+          "elapsed_seconds": 6.009310424,
+          "messages_per_second": 218972.21264267975,
+          "p50_ms": 4.343938,
+          "p95_ms": 7.998342,
+          "p99_ms": 10.347717,
+          "max_ms": 34.991539,
+          "errors": 0,
+          "operations": 1315872,
+          "operations_per_second": 218972.21264267975
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.00723323924467,
+          "server_cpu_seconds": 10.580000000000002,
+          "server_user_cpu_seconds": 6.040000000000001,
+          "server_system_cpu_seconds": 4.54,
+          "thread_counters": {
+            "voluntary": 34049,
+            "involuntary": 8310,
+            "run_ns": 10577496243,
+            "runqueue_ns": 976678036,
+            "timeslices": 42359
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 176.1210124301799,
+          "client_cpu_percent": 251.8630357342742,
+          "cpu_us_per_operation": 9.438608010505584,
+          "mean_rss_mib": 48.89453125,
+          "peak_rss_mib": 48.89453125,
+          "peak_vms_mib": 181.05078125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.859999999403954,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 15.13,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1120928,
+          "elapsed_seconds": 6.006350462,
+          "messages_per_second": 186623.8087656897,
+          "p50_ms": 1.15719,
+          "p95_ms": 2.549845,
+          "p99_ms": 4.097635,
+          "max_ms": 30.154111,
+          "errors": 0,
+          "operations": 1120928,
+          "operations_per_second": 186623.8087656897
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.006523300893605,
+          "server_cpu_seconds": 10.96,
+          "server_user_cpu_seconds": 6.800000000000001,
+          "server_system_cpu_seconds": 4.16,
+          "thread_counters": {
+            "voluntary": 4751,
+            "involuntary": 4669,
+            "run_ns": 10958565095,
+            "runqueue_ns": 794976691,
+            "timeslices": 9420
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 182.4682840799012,
+          "client_cpu_percent": 234.7447815261502,
+          "cpu_us_per_operation": 10.874396748793497,
+          "mean_rss_mib": 12.657826834862385,
+          "peak_rss_mib": 12.87109375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.819999999832362,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 14.099999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1007872,
+          "elapsed_seconds": 6.005723121,
+          "messages_per_second": 167818.5923150219,
+          "p50_ms": 1.326846,
+          "p95_ms": 2.503502,
+          "p99_ms": 4.047977,
+          "max_ms": 33.876881,
+          "errors": 0,
+          "operations": 1007872,
+          "operations_per_second": 167818.5923150219
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.015614357311279,
+          "server_cpu_seconds": 3.94,
+          "server_user_cpu_seconds": 1.1099999999999999,
+          "server_system_cpu_seconds": 2.83,
+          "thread_counters": {
+            "voluntary": 198682,
+            "involuntary": 653,
+            "run_ns": 3947155110,
+            "runqueue_ns": 536177847,
+            "timeslices": 199335
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 65.49621977032801,
+          "client_cpu_percent": 59.17932547775829,
+          "cpu_us_per_operation": 39.829763144327295,
+          "mean_rss_mib": 23.981816924778762,
+          "peak_rss_mib": 24.08984375,
+          "peak_vms_mib": 156.46875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 13.290000000037253,
+          "controller_cpu_seconds": 0.4800000000000004,
+          "measured_client_cpu_seconds": 3.5599999999999996,
+          "background_cpu_seconds": 5.310000000037253,
+          "background_cpu_percent": 88.27028603626438,
+          "messages": 98921,
+          "elapsed_seconds": 6.0006612,
+          "messages_per_second": 16485.0166844947,
+          "p50_ms": 0.046455,
+          "p95_ms": 0.082437,
+          "p99_ms": 0.143827,
+          "max_ms": 4.321248,
+          "errors": 0,
+          "operations": 98921,
+          "operations_per_second": 16485.0166844947
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.009436807129532,
+          "server_cpu_seconds": 4.33,
+          "server_user_cpu_seconds": 1.5199999999999998,
+          "server_system_cpu_seconds": 2.8099999999999996,
+          "thread_counters": {
+            "voluntary": 190944,
+            "involuntary": 310,
+            "run_ns": 4334216106,
+            "runqueue_ns": 428324598,
+            "timeslices": 191254
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 72.05334108618854,
+          "client_cpu_percent": 57.07689605672673,
+          "cpu_us_per_operation": 45.352186436239855,
+          "mean_rss_mib": 4.09765625,
+          "peak_rss_mib": 4.09765625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 11.330000000074506,
+          "controller_cpu_seconds": 0.46000000000000085,
+          "measured_client_cpu_seconds": 3.4300000000000006,
+          "background_cpu_seconds": 3.1100000000745043,
+          "background_cpu_percent": 51.75193782526897,
+          "messages": 95475,
+          "elapsed_seconds": 6.000567042,
+          "messages_per_second": 15910.996299472725,
+          "p50_ms": 0.04965,
+          "p95_ms": 0.080666,
+          "p99_ms": 0.138239,
+          "max_ms": 5.093095,
+          "errors": 0,
+          "operations": 95475,
+          "operations_per_second": 15910.996299472725
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.023284585215151,
+          "server_cpu_seconds": 11.139999999999999,
+          "server_user_cpu_seconds": 4.85,
+          "server_system_cpu_seconds": 6.289999999999999,
+          "thread_counters": {
+            "voluntary": 7836,
+            "involuntary": 3811,
+            "run_ns": 11131623962,
+            "runqueue_ns": 624823016,
+            "timeslices": 11647
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 184.94892350503272,
+          "client_cpu_percent": 220.64373369675812,
+          "cpu_us_per_operation": 29.09375816139984,
+          "mean_rss_mib": 15.890625,
+          "peak_rss_mib": 15.890625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.87999999988824,
+          "controller_cpu_seconds": 0.5300000000000011,
+          "measured_client_cpu_seconds": 13.29,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 382900,
+          "elapsed_seconds": 6.004666621,
+          "messages_per_second": 63767.07054158369,
+          "p50_ms": 1.942093,
+          "p95_ms": 3.387703,
+          "p99_ms": 4.950005,
+          "max_ms": 33.866349,
+          "errors": 0,
+          "operations": 382900,
+          "operations_per_second": 63767.07054158369
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.004287238232791,
+          "server_cpu_seconds": 10.340000000000002,
+          "server_user_cpu_seconds": 3.38,
+          "server_system_cpu_seconds": 6.960000000000001,
+          "thread_counters": {
+            "voluntary": 25094,
+            "involuntary": 7301,
+            "run_ns": 10344621875,
+            "runqueue_ns": 1285056793,
+            "timeslices": 32395
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 172.2102822489771,
+          "client_cpu_percent": 239.9951805810212,
+          "cpu_us_per_operation": 25.59659372215071,
+          "mean_rss_mib": 72.18822337962963,
+          "peak_rss_mib": 73.18359375,
+          "peak_vms_mib": 205.36328125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.87000000011176,
+          "controller_cpu_seconds": 0.5199999999999996,
+          "measured_client_cpu_seconds": 14.409999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 403960,
+          "elapsed_seconds": 6.003324131,
+          "messages_per_second": 67289.38687718508,
+          "p50_ms": 1.683589,
+          "p95_ms": 3.310086,
+          "p99_ms": 5.036931,
+          "max_ms": 17.977038,
+          "errors": 0,
+          "operations": 403960,
+          "operations_per_second": 67289.38687718508
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.010005882941186,
+          "server_cpu_seconds": 10.3,
+          "server_user_cpu_seconds": 4.7,
+          "server_system_cpu_seconds": 5.6,
+          "thread_counters": {
+            "voluntary": 51985,
+            "involuntary": 7364,
+            "run_ns": 10292797330,
+            "runqueue_ns": 1240922538,
+            "timeslices": 59349
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 171.38086385631573,
+          "client_cpu_percent": 265.3907551949743,
+          "cpu_us_per_operation": 7.726838987679067,
+          "mean_rss_mib": 73.33695969626169,
+          "peak_rss_mib": 73.34765625,
+          "peak_vms_mib": 205.4609375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.270000000018626,
+          "controller_cpu_seconds": 0.46000000000000085,
+          "measured_client_cpu_seconds": 15.95,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1333016,
+          "elapsed_seconds": 6.009171639,
+          "messages_per_second": 221830.24218323547,
+          "p50_ms": 4.29891,
+          "p95_ms": 7.824857,
+          "p99_ms": 10.348721,
+          "max_ms": 38.193776,
+          "errors": 0,
+          "operations": 1333016,
+          "operations_per_second": 221830.24218323547
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.013790905009955,
+          "server_cpu_seconds": 10.510000000000002,
+          "server_user_cpu_seconds": 6.130000000000001,
+          "server_system_cpu_seconds": 4.380000000000001,
+          "thread_counters": {
+            "voluntary": 5984,
+            "involuntary": 4612,
+            "run_ns": 10502602552,
+            "runqueue_ns": 1250008361,
+            "timeslices": 10596
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 174.76497214501347,
+          "client_cpu_percent": 226.64572505580716,
+          "cpu_us_per_operation": 9.160478332113101,
+          "mean_rss_mib": 19.578089162844037,
+          "peak_rss_mib": 19.578125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.08999999985099,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 13.629999999999999,
+          "background_cpu_seconds": 0.47999999985098896,
+          "background_cpu_percent": 7.981654291490441,
+          "messages": 1147320,
+          "elapsed_seconds": 6.012927934,
+          "messages_per_second": 190808.87258144212,
+          "p50_ms": 4.975415,
+          "p95_ms": 9.91781,
+          "p99_ms": 13.579926,
+          "max_ms": 42.665839,
+          "errors": 0,
+          "operations": 1147320,
+          "operations_per_second": 190808.87258144212
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.006946919020265,
+          "server_cpu_seconds": 10.99,
+          "server_user_cpu_seconds": 6.800000000000001,
+          "server_system_cpu_seconds": 4.19,
+          "thread_counters": {
+            "voluntary": 5116,
+            "involuntary": 5766,
+            "run_ns": 10985957136,
+            "runqueue_ns": 754520036,
+            "timeslices": 10882
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 182.9548379260936,
+          "client_cpu_percent": 239.05654891889944,
+          "cpu_us_per_operation": 10.674545821872037,
+          "mean_rss_mib": 12.836618405963304,
+          "peak_rss_mib": 12.921875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.93999999947846,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 14.360000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1029552,
+          "elapsed_seconds": 6.005971183,
+          "messages_per_second": 171421.4019065166,
+          "p50_ms": 1.29063,
+          "p95_ms": 2.449112,
+          "p99_ms": 3.900988,
+          "max_ms": 21.6416,
+          "errors": 0,
+          "operations": 1029552,
+          "operations_per_second": 171421.4019065166
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.0068964352831244,
+          "server_cpu_seconds": 10.47,
+          "server_user_cpu_seconds": 6.0,
+          "server_system_cpu_seconds": 4.47,
+          "thread_counters": {
+            "voluntary": 29451,
+            "involuntary": 7048,
+            "run_ns": 10473332267,
+            "runqueue_ns": 1073919771,
+            "timeslices": 36499
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 174.29965894703352,
+          "client_cpu_percent": 253.54191077013564,
+          "cpu_us_per_operation": 9.390404029532686,
+          "mean_rss_mib": 48.95703125,
+          "peak_rss_mib": 48.95703125,
+          "peak_vms_mib": 181.0625,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.78000000026077,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 15.229999999999999,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1114968,
+          "elapsed_seconds": 6.006019162,
+          "messages_per_second": 185641.76535672531,
+          "p50_ms": 1.18013,
+          "p95_ms": 2.583643,
+          "p99_ms": 4.150218,
+          "max_ms": 21.277183,
+          "errors": 0,
+          "operations": 1114968,
+          "operations_per_second": 185641.76535672531
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.00399008160457,
+          "server_cpu_seconds": 4.42,
+          "server_user_cpu_seconds": 1.57,
+          "server_system_cpu_seconds": 2.8499999999999996,
+          "thread_counters": {
+            "voluntary": 196813,
+            "involuntary": 214,
+            "run_ns": 4418206559,
+            "runqueue_ns": 369995485,
+            "timeslices": 197026
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 73.61770988833399,
+          "client_cpu_percent": 57.62834303475919,
+          "cpu_us_per_operation": 44.91367834896506,
+          "mean_rss_mib": 4.15625,
+          "peak_rss_mib": 4.15625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 10.489999999292195,
+          "controller_cpu_seconds": 0.45999999999999375,
+          "measured_client_cpu_seconds": 3.46,
+          "background_cpu_seconds": 2.149999999292201,
+          "background_cpu_percent": 35.809519504029765,
+          "messages": 98411,
+          "elapsed_seconds": 6.000619672,
+          "messages_per_second": 16400.13954878759,
+          "p50_ms": 0.049179,
+          "p95_ms": 0.075283,
+          "p99_ms": 0.126274,
+          "max_ms": 3.923753,
+          "errors": 0,
+          "operations": 98411,
+          "operations_per_second": 16400.13954878759
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.002082928083837,
+          "server_cpu_seconds": 4.12,
+          "server_user_cpu_seconds": 1.1099999999999999,
+          "server_system_cpu_seconds": 3.0100000000000002,
+          "thread_counters": {
+            "voluntary": 211237,
+            "involuntary": 353,
+            "run_ns": 4128766549,
+            "runqueue_ns": 344069834,
+            "timeslices": 211590
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 68.64283698451513,
+          "client_cpu_percent": 62.31170153448703,
+          "cpu_us_per_operation": 39.15419339510573,
+          "mean_rss_mib": 24.023748617256636,
+          "peak_rss_mib": 24.13671875,
+          "peak_vms_mib": 156.46875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 10.71999999973923,
+          "controller_cpu_seconds": 0.46999999999999886,
+          "measured_client_cpu_seconds": 3.74,
+          "background_cpu_seconds": 2.3899999997392305,
+          "background_cpu_percent": 39.81950979977941,
+          "messages": 105225,
+          "elapsed_seconds": 6.0006998,
+          "messages_per_second": 17535.454781457323,
+          "p50_ms": 0.045664,
+          "p95_ms": 0.069504,
+          "p99_ms": 0.117949,
+          "max_ms": 2.975044,
+          "errors": 0,
+          "operations": 105225,
+          "operations_per_second": 17535.454781457323
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.004360596649349,
+          "server_cpu_seconds": 9.899999999999999,
+          "server_user_cpu_seconds": 3.25,
+          "server_system_cpu_seconds": 6.649999999999999,
+          "thread_counters": {
+            "voluntary": 20345,
+            "involuntary": 7856,
+            "run_ns": 9901982333,
+            "runqueue_ns": 2059375926,
+            "timeslices": 28201
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 164.8801706800314,
+          "client_cpu_percent": 233.1638777293374,
+          "cpu_us_per_operation": 25.3007983807489,
+          "mean_rss_mib": 71.51942172897196,
+          "peak_rss_mib": 73.15625,
+          "peak_vms_mib": 205.34375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.580000000074506,
+          "controller_cpu_seconds": 0.509999999999998,
+          "measured_client_cpu_seconds": 14.0,
+          "background_cpu_seconds": 0.17000000007450922,
+          "background_cpu_percent": 2.8312756593828725,
+          "messages": 391292,
+          "elapsed_seconds": 6.003465055,
+          "messages_per_second": 65177.69261838403,
+          "p50_ms": 1.692822,
+          "p95_ms": 3.680862,
+          "p99_ms": 5.224933,
+          "max_ms": 28.941205,
+          "errors": 0,
+          "operations": 391292,
+          "operations_per_second": 65177.69261838403
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.00381127698347,
+          "server_cpu_seconds": 10.940000000000001,
+          "server_user_cpu_seconds": 4.710000000000001,
+          "server_system_cpu_seconds": 6.23,
+          "thread_counters": {
+            "voluntary": 8563,
+            "involuntary": 5046,
+            "run_ns": 10940990284,
+            "runqueue_ns": 789532487,
+            "timeslices": 13609
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 182.21758638450493,
+          "client_cpu_percent": 218.1947332392151,
+          "cpu_us_per_operation": 29.28093099442753,
+          "mean_rss_mib": 18.26076858108108,
+          "peak_rss_mib": 18.26171875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.919999999925494,
+          "controller_cpu_seconds": 0.5,
+          "measured_client_cpu_seconds": 13.099999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 373622,
+          "elapsed_seconds": 6.00300377,
+          "messages_per_second": 62239.174639065735,
+          "p50_ms": 1.987139,
+          "p95_ms": 3.545066,
+          "p99_ms": 5.340541,
+          "max_ms": 29.676965,
+          "errors": 0,
+          "operations": 373622,
+          "operations_per_second": 62239.174639065735
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.009938682895154,
+          "server_cpu_seconds": 11.07,
+          "server_user_cpu_seconds": 6.33,
+          "server_system_cpu_seconds": 4.74,
+          "thread_counters": {
+            "voluntary": 6858,
+            "involuntary": 6269,
+            "run_ns": 11073257872,
+            "runqueue_ns": 744085912,
+            "timeslices": 13127
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 184.1948908980761,
+          "client_cpu_percent": 240.60145640344902,
+          "cpu_us_per_operation": 8.956774460813506,
+          "mean_rss_mib": 19.081995738636362,
+          "peak_rss_mib": 19.08203125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.40000000037253,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 14.46,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1235936,
+          "elapsed_seconds": 6.00909301,
+          "messages_per_second": 205677.62854447812,
+          "p50_ms": 4.662339,
+          "p95_ms": 8.458733,
+          "p99_ms": 12.232612,
+          "max_ms": 32.977098,
+          "errors": 0,
+          "operations": 1235936,
+          "operations_per_second": 205677.62854447812
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009408294223249,
+          "server_cpu_seconds": 10.28,
+          "server_user_cpu_seconds": 4.6,
+          "server_system_cpu_seconds": 5.68,
+          "thread_counters": {
+            "voluntary": 57098,
+            "involuntary": 7379,
+            "run_ns": 10280634904,
+            "runqueue_ns": 1435008688,
+            "timeslices": 64477
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 171.06509487601306,
+          "client_cpu_percent": 264.4187118268334,
+          "cpu_us_per_operation": 7.628783965899038,
+          "mean_rss_mib": 73.37109375,
+          "peak_rss_mib": 73.37109375,
+          "peak_vms_mib": 205.45703125,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.269999999552965,
+          "controller_cpu_seconds": 0.4899999999999949,
+          "measured_client_cpu_seconds": 15.889999999999997,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1347528,
+          "elapsed_seconds": 6.008534936,
+          "messages_per_second": 224268.97976848177,
+          "p50_ms": 4.2464,
+          "p95_ms": 7.749973,
+          "p99_ms": 10.006521,
+          "max_ms": 33.783511,
+          "errors": 0,
+          "operations": 1347528,
+          "operations_per_second": 224268.97976848177
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.007327102124691,
+          "server_cpu_seconds": 10.42,
+          "server_user_cpu_seconds": 5.93,
+          "server_system_cpu_seconds": 4.49,
+          "thread_counters": {
+            "voluntary": 32884,
+            "involuntary": 7639,
+            "run_ns": 10420787549,
+            "runqueue_ns": 1057406009,
+            "timeslices": 40523
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 173.45484643768808,
+          "client_cpu_percent": 249.19568629291655,
+          "cpu_us_per_operation": 9.466324595001199,
+          "mean_rss_mib": 48.91796875,
+          "peak_rss_mib": 48.91796875,
+          "peak_vms_mib": 181.06640625,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.520000000018626,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 14.97,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1100744,
+          "elapsed_seconds": 6.006387001,
+          "messages_per_second": 183262.25063698654,
+          "p50_ms": 1.18105,
+          "p95_ms": 2.688802,
+          "p99_ms": 4.140756,
+          "max_ms": 30.598393,
+          "errors": 0,
+          "operations": 1100744,
+          "operations_per_second": 183262.25063698654
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.006693770177662,
+          "server_cpu_seconds": 10.5,
+          "server_user_cpu_seconds": 6.59,
+          "server_system_cpu_seconds": 3.91,
+          "thread_counters": {
+            "voluntary": 5973,
+            "involuntary": 4754,
+            "run_ns": 10490249874,
+            "runqueue_ns": 1135117220,
+            "timeslices": 10727
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 174.80498260342375,
+          "client_cpu_percent": 217.9235449789349,
+          "cpu_us_per_operation": 11.480227767718912,
+          "mean_rss_mib": 12.951497395833334,
+          "peak_rss_mib": 13.046875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.56000000005588,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 13.09,
+          "background_cpu_seconds": 1.4900000000558826,
+          "background_cpu_percent": 24.805659437035235,
+          "messages": 914616,
+          "elapsed_seconds": 6.005669783,
+          "messages_per_second": 152292.08948333547,
+          "p50_ms": 1.40037,
+          "p95_ms": 3.09666,
+          "p99_ms": 4.617057,
+          "max_ms": 37.445553,
+          "errors": 0,
+          "operations": 914616,
+          "operations_per_second": 152292.08948333547
+        }
+      ]
+    },
+    {
+      "trial": 6,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.001418249215931,
+          "server_cpu_seconds": 4.15,
+          "server_user_cpu_seconds": 1.1600000000000001,
+          "server_system_cpu_seconds": 2.99,
+          "thread_counters": {
+            "voluntary": 211245,
+            "involuntary": 371,
+            "run_ns": 4148968066,
+            "runqueue_ns": 345810368,
+            "timeslices": 211616
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 69.15032126851327,
+          "client_cpu_percent": 62.31860278174448,
+          "cpu_us_per_operation": 39.43292601812965,
+          "mean_rss_mib": 23.936566648230087,
+          "peak_rss_mib": 24.03515625,
+          "peak_vms_mib": 156.4609375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 10.31000000005588,
+          "controller_cpu_seconds": 0.45999999999999375,
+          "measured_client_cpu_seconds": 3.74,
+          "background_cpu_seconds": 1.960000000055885,
+          "background_cpu_percent": 32.65894691328927,
+          "messages": 105242,
+          "elapsed_seconds": 6.00066006,
+          "messages_per_second": 17538.403933516605,
+          "p50_ms": 0.045692,
+          "p95_ms": 0.070968,
+          "p99_ms": 0.119042,
+          "max_ms": 2.832095,
+          "errors": 0,
+          "operations": 105242,
+          "operations_per_second": 17538.403933516605
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.001649784389883,
+          "server_cpu_seconds": 4.39,
+          "server_user_cpu_seconds": 1.6199999999999999,
+          "server_system_cpu_seconds": 2.77,
+          "thread_counters": {
+            "voluntary": 189863,
+            "involuntary": 268,
+            "run_ns": 4390672741,
+            "runqueue_ns": 398682540,
+            "timeslices": 190131
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 73.14655399284146,
+          "client_cpu_percent": 56.48446880085025,
+          "cpu_us_per_operation": 46.24070445975268,
+          "mean_rss_mib": 4.171875,
+          "peak_rss_mib": 4.171875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 10.419999999459833,
+          "controller_cpu_seconds": 0.45999999999999375,
+          "measured_client_cpu_seconds": 3.39,
+          "background_cpu_seconds": 2.1799999994598394,
+          "background_cpu_percent": 36.32334570954067,
+          "messages": 94938,
+          "elapsed_seconds": 6.000608794,
+          "messages_per_second": 15821.394671642047,
+          "p50_ms": 0.050176,
+          "p95_ms": 0.083233,
+          "p99_ms": 0.140674,
+          "max_ms": 3.132167,
+          "errors": 0,
+          "operations": 94938,
+          "operations_per_second": 15821.394671642047
+        }
+      ]
+    },
+    {
+      "trial": 6,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.004595106933266,
+          "server_cpu_seconds": 11.04,
+          "server_user_cpu_seconds": 4.7700000000000005,
+          "server_system_cpu_seconds": 6.27,
+          "thread_counters": {
+            "voluntary": 7024,
+            "involuntary": 3779,
+            "run_ns": 11051069278,
+            "runqueue_ns": 717037648,
+            "timeslices": 10803
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 183.85919122594217,
+          "client_cpu_percent": 225.66051097024604,
+          "cpu_us_per_operation": 28.47702105597127,
+          "mean_rss_mib": 17.644997133027523,
+          "peak_rss_mib": 17.6484375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.729999999981374,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 13.55,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 387681,
+          "elapsed_seconds": 6.003769523,
+          "messages_per_second": 64572.931808062014,
+          "p50_ms": 1.914264,
+          "p95_ms": 3.416487,
+          "p99_ms": 5.098164,
+          "max_ms": 31.715355,
+          "errors": 0,
+          "operations": 387681,
+          "operations_per_second": 64572.931808062014
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.005138680804521,
+          "server_cpu_seconds": 10.599999999999998,
+          "server_user_cpu_seconds": 3.3999999999999995,
+          "server_system_cpu_seconds": 7.199999999999999,
+          "thread_counters": {
+            "voluntary": 21640,
+            "involuntary": 7690,
+            "run_ns": 10597133640,
+            "runqueue_ns": 1045376003,
+            "timeslices": 29330
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 176.51549053951064,
+          "client_cpu_percent": 250.11911961353306,
+          "cpu_us_per_operation": 25.32770707789942,
+          "mean_rss_mib": 71.69634232954546,
+          "peak_rss_mib": 73.3359375,
+          "peak_vms_mib": 205.390625,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.740000000223517,
+          "controller_cpu_seconds": 0.5200000000000031,
+          "measured_client_cpu_seconds": 15.020000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 418514,
+          "elapsed_seconds": 6.004148467,
+          "messages_per_second": 69704.13911318759,
+          "p50_ms": 1.652206,
+          "p95_ms": 3.10476,
+          "p99_ms": 4.70393,
+          "max_ms": 14.030235,
+          "errors": 0,
+          "operations": 418514,
+          "operations_per_second": 69704.13911318759
+        }
+      ]
+    },
+    {
+      "trial": 6,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.010071374010295,
+          "server_cpu_seconds": 9.86,
+          "server_user_cpu_seconds": 4.37,
+          "server_system_cpu_seconds": 5.489999999999999,
+          "thread_counters": {
+            "voluntary": 51364,
+            "involuntary": 7855,
+            "run_ns": 9869093332,
+            "runqueue_ns": 1738945545,
+            "timeslices": 59219
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 164.05795183461845,
+          "client_cpu_percent": 254.23990913113283,
+          "cpu_us_per_operation": 7.62860308362682,
+          "mean_rss_mib": 73.21002482476635,
+          "peak_rss_mib": 73.21875,
+          "peak_vms_mib": 205.40234375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.77999999979511,
+          "controller_cpu_seconds": 0.490000000000002,
+          "measured_client_cpu_seconds": 15.28,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1292504,
+          "elapsed_seconds": 6.009011217,
+          "messages_per_second": 215094.28977988876,
+          "p50_ms": 4.382524,
+          "p95_ms": 8.279385,
+          "p99_ms": 10.553141,
+          "max_ms": 30.275925,
+          "errors": 0,
+          "operations": 1292504,
+          "operations_per_second": 215094.28977988876
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.009274294134229,
+          "server_cpu_seconds": 11.14,
+          "server_user_cpu_seconds": 6.48,
+          "server_system_cpu_seconds": 4.66,
+          "thread_counters": {
+            "voluntary": 6846,
+            "involuntary": 4419,
+            "run_ns": 11139330002,
+            "runqueue_ns": 679711735,
+            "timeslices": 11265
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 185.3801217041128,
+          "client_cpu_percent": 247.7836635703985,
+          "cpu_us_per_operation": 8.909263074383551,
+          "mean_rss_mib": 19.13868979357798,
+          "peak_rss_mib": 19.140625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.75000000046566,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 14.889999999999999,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1250384,
+          "elapsed_seconds": 6.008437794,
+          "messages_per_second": 208104.6759356697,
+          "p50_ms": 4.662081,
+          "p95_ms": 8.428445,
+          "p99_ms": 11.671078,
+          "max_ms": 45.56005,
+          "errors": 0,
+          "operations": 1250384,
+          "operations_per_second": 208104.6759356697
+        }
+      ]
+    },
+    {
+      "trial": 6,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.021168507169932,
+          "server_cpu_seconds": 11.07,
+          "server_user_cpu_seconds": 6.89,
+          "server_system_cpu_seconds": 4.18,
+          "thread_counters": {
+            "voluntary": 5311,
+            "involuntary": 5768,
+            "run_ns": 11074846560,
+            "runqueue_ns": 682693490,
+            "timeslices": 11079
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 183.8513568723078,
+          "client_cpu_percent": 240.48488234065192,
+          "cpu_us_per_operation": 10.72092662896103,
+          "mean_rss_mib": 12.846390335648149,
+          "peak_rss_mib": 12.96484375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.97000000020489,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 14.48,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1032560,
+          "elapsed_seconds": 6.006704955,
+          "messages_per_second": 171901.2349924885,
+          "p50_ms": 1.297816,
+          "p95_ms": 2.405386,
+          "p99_ms": 3.873027,
+          "max_ms": 27.565659,
+          "errors": 0,
+          "operations": 1032560,
+          "operations_per_second": 171901.2349924885
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.007077373098582,
+          "server_cpu_seconds": 10.32,
+          "server_user_cpu_seconds": 5.9399999999999995,
+          "server_system_cpu_seconds": 4.38,
+          "thread_counters": {
+            "voluntary": 34069,
+            "involuntary": 7238,
+            "run_ns": 10322181735,
+            "runqueue_ns": 1237866355,
+            "timeslices": 41307
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 171.79735433766717,
+          "client_cpu_percent": 250.37133810450717,
+          "cpu_us_per_operation": 9.417158208257899,
+          "mean_rss_mib": 48.96484375,
+          "peak_rss_mib": 48.96484375,
+          "peak_vms_mib": 181.06640625,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.62999999988824,
+          "controller_cpu_seconds": 0.490000000000002,
+          "measured_client_cpu_seconds": 15.04,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1095872,
+          "elapsed_seconds": 6.006004385,
+          "messages_per_second": 182462.73724623662,
+          "p50_ms": 1.191471,
+          "p95_ms": 2.696486,
+          "p99_ms": 4.08961,
+          "max_ms": 26.699113,
+          "errors": 0,
+          "operations": 1095872,
+          "operations_per_second": 182462.73724623662
+        }
+      ]
+    },
+    {
+      "trial": 7,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.001438340172172,
+          "server_cpu_seconds": 4.4399999999999995,
+          "server_user_cpu_seconds": 1.58,
+          "server_system_cpu_seconds": 2.86,
+          "thread_counters": {
+            "voluntary": 196148,
+            "involuntary": 204,
+            "run_ns": 4440616758,
+            "runqueue_ns": 399002006,
+            "timeslices": 196352
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 73.98226472277017,
+          "client_cpu_percent": 57.81947265495777,
+          "cpu_us_per_operation": 45.26962958431468,
+          "mean_rss_mib": 4.17578125,
+          "peak_rss_mib": 4.17578125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 10.790000000037253,
+          "controller_cpu_seconds": 0.44999999999999574,
+          "measured_client_cpu_seconds": 3.47,
+          "background_cpu_seconds": 2.4300000000372575,
+          "background_cpu_percent": 40.4902935313261,
+          "messages": 98079,
+          "elapsed_seconds": 6.000659495,
+          "messages_per_second": 16344.703458298794,
+          "p50_ms": 0.049074,
+          "p95_ms": 0.075543,
+          "p99_ms": 0.124259,
+          "max_ms": 3.084214,
+          "errors": 0,
+          "operations": 98079,
+          "operations_per_second": 16344.703458298794
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.002477804664522,
+          "server_cpu_seconds": 4.03,
+          "server_user_cpu_seconds": 1.1300000000000001,
+          "server_system_cpu_seconds": 2.9000000000000004,
+          "thread_counters": {
+            "voluntary": 204761,
+            "involuntary": 422,
+            "run_ns": 4030724624,
+            "runqueue_ns": 486653291,
+            "timeslices": 205183
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 67.13894047002206,
+          "client_cpu_percent": 60.30842791599995,
+          "cpu_us_per_operation": 39.51406524233006,
+          "mean_rss_mib": 24.073112555309734,
+          "peak_rss_mib": 24.16796875,
+          "peak_vms_mib": 156.46875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 11.179999999701977,
+          "controller_cpu_seconds": 0.46000000000000796,
+          "measured_client_cpu_seconds": 3.62,
+          "background_cpu_seconds": 3.0699999997019685,
+          "background_cpu_percent": 51.14554521661493,
+          "messages": 101989,
+          "elapsed_seconds": 6.000649137,
+          "messages_per_second": 16996.327842455554,
+          "p50_ms": 0.046026,
+          "p95_ms": 0.076894,
+          "p99_ms": 0.128517,
+          "max_ms": 2.974186,
+          "errors": 0,
+          "operations": 101989,
+          "operations_per_second": 16996.327842455554
+        }
+      ]
+    },
+    {
+      "trial": 7,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.005442458204925,
+          "server_cpu_seconds": 10.13,
+          "server_user_cpu_seconds": 3.33,
+          "server_system_cpu_seconds": 6.800000000000001,
+          "thread_counters": {
+            "voluntary": 20438,
+            "involuntary": 7002,
+            "run_ns": 10127224218,
+            "runqueue_ns": 1479719498,
+            "timeslices": 27440
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 168.68032739469356,
+          "client_cpu_percent": 238.6168895919011,
+          "cpu_us_per_operation": 25.228626646211474,
+          "mean_rss_mib": 72.65451388888889,
+          "peak_rss_mib": 73.29296875,
+          "peak_vms_mib": 205.38671875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.96999999973923,
+          "controller_cpu_seconds": 0.5100000000000051,
+          "measured_client_cpu_seconds": 14.329999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 401528,
+          "elapsed_seconds": 6.004586271,
+          "messages_per_second": 66870.21917550529,
+          "p50_ms": 1.678492,
+          "p95_ms": 3.3758,
+          "p99_ms": 5.118038,
+          "max_ms": 47.239166,
+          "errors": 0,
+          "operations": 401528,
+          "operations_per_second": 66870.21917550529
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.013090837746859,
+          "server_cpu_seconds": 11.11,
+          "server_user_cpu_seconds": 4.82,
+          "server_system_cpu_seconds": 6.29,
+          "thread_counters": {
+            "voluntary": 8819,
+            "involuntary": 4436,
+            "run_ns": 11105772815,
+            "runqueue_ns": 579681964,
+            "timeslices": 13255
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 184.76354839440583,
+          "client_cpu_percent": 225.00907378724673,
+          "cpu_us_per_operation": 28.684810476281456,
+          "mean_rss_mib": 16.94921875,
+          "peak_rss_mib": 16.94921875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.760000000707805,
+          "controller_cpu_seconds": 0.509999999999998,
+          "measured_client_cpu_seconds": 13.530000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 387313,
+          "elapsed_seconds": 6.003343699,
+          "messages_per_second": 64516.212867258655,
+          "p50_ms": 1.938151,
+          "p95_ms": 3.402112,
+          "p99_ms": 4.75913,
+          "max_ms": 24.151176,
+          "errors": 0,
+          "operations": 387313,
+          "operations_per_second": 64516.212867258655
+        }
+      ]
+    },
+    {
+      "trial": 7,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.0087104882113636,
+          "server_cpu_seconds": 11.02,
+          "server_user_cpu_seconds": 6.52,
+          "server_system_cpu_seconds": 4.5,
+          "thread_counters": {
+            "voluntary": 6843,
+            "involuntary": 6139,
+            "run_ns": 11011929931,
+            "runqueue_ns": 813419277,
+            "timeslices": 12982
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 183.40041547384266,
+          "client_cpu_percent": 250.13686429871646,
+          "cpu_us_per_operation": 8.931292265598152,
+          "mean_rss_mib": 19.18145978009259,
+          "peak_rss_mib": 19.18359375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.869999999646097,
+          "controller_cpu_seconds": 0.44999999999999574,
+          "measured_client_cpu_seconds": 15.030000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1233864,
+          "elapsed_seconds": 6.007854558,
+          "messages_per_second": 205375.14483552185,
+          "p50_ms": 4.682019,
+          "p95_ms": 8.41549,
+          "p99_ms": 12.627055,
+          "max_ms": 47.170119,
+          "errors": 0,
+          "operations": 1233864,
+          "operations_per_second": 205375.14483552185
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009351968765259,
+          "server_cpu_seconds": 9.8,
+          "server_user_cpu_seconds": 4.46,
+          "server_system_cpu_seconds": 5.34,
+          "thread_counters": {
+            "voluntary": 53168,
+            "involuntary": 8071,
+            "run_ns": 9812345652,
+            "runqueue_ns": 1797471952,
+            "timeslices": 61238
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 163.07914815003932,
+          "client_cpu_percent": 255.1023817489901,
+          "cpu_us_per_operation": 7.567006615725785,
+          "mean_rss_mib": 73.38117897727273,
+          "peak_rss_mib": 73.38671875,
+          "peak_vms_mib": 205.4609375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.600000000093132,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 15.330000000000002,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1295096,
+          "elapsed_seconds": 6.008557117,
+          "messages_per_second": 215541.93041384048,
+          "p50_ms": 4.352733,
+          "p95_ms": 8.304841,
+          "p99_ms": 11.351189,
+          "max_ms": 35.853269,
+          "errors": 0,
+          "operations": 1295096,
+          "operations_per_second": 215541.93041384048
+        }
+      ]
+    },
+    {
+      "trial": 7,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.00688056461513,
+          "server_cpu_seconds": 9.91,
+          "server_user_cpu_seconds": 5.609999999999999,
+          "server_system_cpu_seconds": 4.300000000000001,
+          "thread_counters": {
+            "voluntary": 34052,
+            "involuntary": 10447,
+            "run_ns": 9913789107,
+            "runqueue_ns": 1488080445,
+            "timeslices": 44499
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 164.97747696827975,
+          "client_cpu_percent": 234.06491686922433,
+          "cpu_us_per_operation": 9.557813681465364,
+          "mean_rss_mib": 49.0390625,
+          "peak_rss_mib": 49.0390625,
+          "peak_vms_mib": 181.1875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 25.320000000298023,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 14.059999999999997,
+          "background_cpu_seconds": 0.8700000002980293,
+          "background_cpu_percent": 14.483391020340212,
+          "messages": 1036848,
+          "elapsed_seconds": 6.006001914,
+          "messages_per_second": 172635.3096197165,
+          "p50_ms": 1.201433,
+          "p95_ms": 3.206689,
+          "p99_ms": 4.690127,
+          "max_ms": 32.278498,
+          "errors": 0,
+          "operations": 1036848,
+          "operations_per_second": 172635.3096197165
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.017135060857981,
+          "server_cpu_seconds": 11.26,
+          "server_user_cpu_seconds": 7.0,
+          "server_system_cpu_seconds": 4.26,
+          "thread_counters": {
+            "voluntary": 4919,
+            "involuntary": 4023,
+            "run_ns": 11252850815,
+            "runqueue_ns": 537064786,
+            "timeslices": 8942
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 187.13224626196842,
+          "client_cpu_percent": 238.15320505630612,
+          "cpu_us_per_operation": 11.123668321057124,
+          "mean_rss_mib": 12.763462611607142,
+          "peak_rss_mib": 12.8359375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.130000000353903,
+          "controller_cpu_seconds": 0.4899999999999949,
+          "measured_client_cpu_seconds": 14.329999999999998,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1012256,
+          "elapsed_seconds": 6.005570522,
+          "messages_per_second": 168552.8454443816,
+          "p50_ms": 1.344435,
+          "p95_ms": 2.382961,
+          "p99_ms": 3.655311,
+          "max_ms": 29.974384,
+          "errors": 0,
+          "operations": 1012256,
+          "operations_per_second": 168552.8454443816
+        }
+      ]
+    },
+    {
+      "trial": 8,
+      "case": {
+        "name": "ws_1_pair",
+        "kind": "ws",
+        "pairs": 1,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.002061342354864,
+          "server_cpu_seconds": 4.119999999999999,
+          "server_user_cpu_seconds": 1.17,
+          "server_system_cpu_seconds": 2.95,
+          "thread_counters": {
+            "voluntary": 210417,
+            "involuntary": 282,
+            "run_ns": 4122715286,
+            "runqueue_ns": 367046730,
+            "timeslices": 210697
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 68.64308385064835,
+          "client_cpu_percent": 61.81209735094792,
+          "cpu_us_per_operation": 39.303226298818984,
+          "mean_rss_mib": 24.145159040178573,
+          "peak_rss_mib": 24.2265625,
+          "peak_vms_mib": 156.46484375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 10.90999999968335,
+          "controller_cpu_seconds": 0.45999999999999375,
+          "measured_client_cpu_seconds": 3.7100000000000004,
+          "background_cpu_seconds": 2.619999999683357,
+          "background_cpu_percent": 43.65166982207849,
+          "messages": 104826,
+          "elapsed_seconds": 6.000778392,
+          "messages_per_second": 17468.733746233633,
+          "p50_ms": 0.045634,
+          "p95_ms": 0.071584,
+          "p99_ms": 0.116878,
+          "max_ms": 3.08592,
+          "errors": 0,
+          "operations": 104826,
+          "operations_per_second": 17468.733746233633
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.00133676500991,
+          "server_cpu_seconds": 4.42,
+          "server_user_cpu_seconds": 1.63,
+          "server_system_cpu_seconds": 2.79,
+          "thread_counters": {
+            "voluntary": 192410,
+            "involuntary": 263,
+            "run_ns": 4417616889,
+            "runqueue_ns": 390420800,
+            "timeslices": 192673
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 73.65025781872951,
+          "client_cpu_percent": 56.654044475945774,
+          "cpu_us_per_operation": 45.941647870781324,
+          "mean_rss_mib": 4.109375,
+          "peak_rss_mib": 4.109375,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 10.660000000149012,
+          "controller_cpu_seconds": 0.46000000000000085,
+          "measured_client_cpu_seconds": 3.4,
+          "background_cpu_seconds": 2.380000000149011,
+          "background_cpu_percent": 39.65783113564501,
+          "messages": 96209,
+          "elapsed_seconds": 6.000594528,
+          "messages_per_second": 16033.244631189318,
+          "p50_ms": 0.049592,
+          "p95_ms": 0.083193,
+          "p99_ms": 0.140244,
+          "max_ms": 3.093512,
+          "errors": 0,
+          "operations": 96209,
+          "operations_per_second": 16033.244631189318
+        }
+      ]
+    },
+    {
+      "trial": 8,
+      "case": {
+        "name": "ws_128_pairs",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 1
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.005804871208966,
+          "server_cpu_seconds": 10.7,
+          "server_user_cpu_seconds": 4.59,
+          "server_system_cpu_seconds": 6.11,
+          "thread_counters": {
+            "voluntary": 7637,
+            "involuntary": 3994,
+            "run_ns": 10691096961,
+            "runqueue_ns": 1049374890,
+            "timeslices": 11631
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 178.16096642257534,
+          "client_cpu_percent": 215.45821546804908,
+          "cpu_us_per_operation": 29.336206636562782,
+          "mean_rss_mib": 18.6328125,
+          "peak_rss_mib": 18.6328125,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 23.87000000011176,
+          "controller_cpu_seconds": 0.4900000000000091,
+          "measured_client_cpu_seconds": 12.94,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 364737,
+          "elapsed_seconds": 6.002744392,
+          "messages_per_second": 60761.70767592464,
+          "p50_ms": 1.971534,
+          "p95_ms": 3.803339,
+          "p99_ms": 5.701556,
+          "max_ms": 32.472746,
+          "errors": 0,
+          "operations": 364737,
+          "operations_per_second": 60761.70767592464
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.027627047616988,
+          "server_cpu_seconds": 10.120000000000001,
+          "server_user_cpu_seconds": 3.25,
+          "server_system_cpu_seconds": 6.870000000000001,
+          "thread_counters": {
+            "voluntary": 26859,
+            "involuntary": 7802,
+            "run_ns": 10112962361,
+            "runqueue_ns": 1747291608,
+            "timeslices": 34661
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 167.89359925645905,
+          "client_cpu_percent": 233.42519185161845,
+          "cpu_us_per_operation": 25.60897225019865,
+          "mean_rss_mib": 71.15133101851852,
+          "peak_rss_mib": 73.30078125,
+          "peak_vms_mib": 205.32421875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 25.28000000026077,
+          "controller_cpu_seconds": 0.509999999999998,
+          "measured_client_cpu_seconds": 14.07,
+          "background_cpu_seconds": 0.580000000260771,
+          "background_cpu_percent": 9.622360436020557,
+          "messages": 395174,
+          "elapsed_seconds": 6.00842738,
+          "messages_per_second": 65769.95526573212,
+          "p50_ms": 1.678935,
+          "p95_ms": 3.483136,
+          "p99_ms": 5.449175,
+          "max_ms": 33.295148,
+          "errors": 0,
+          "operations": 395174,
+          "operations_per_second": 65769.95526573212
+        }
+      ]
+    },
+    {
+      "trial": 8,
+      "case": {
+        "name": "ws_128_pairs_pipeline",
+        "kind": "ws",
+        "pairs": 128,
+        "bytes": 64,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "v-reactor-pooled",
+        "rust"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.009740306995809,
+          "server_cpu_seconds": 10.399999999999999,
+          "server_user_cpu_seconds": 4.66,
+          "server_system_cpu_seconds": 5.739999999999999,
+          "thread_counters": {
+            "voluntary": 55213,
+            "involuntary": 6062,
+            "run_ns": 10393542131,
+            "runqueue_ns": 1203617480,
+            "timeslices": 61275
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 173.05240274514995,
+          "client_cpu_percent": 266.73365538507255,
+          "cpu_us_per_operation": 7.675593972887439,
+          "mean_rss_mib": 73.26096616972477,
+          "peak_rss_mib": 73.27734375,
+          "peak_vms_mib": 205.43359375,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.330000000074506,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 16.03,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1354944,
+          "elapsed_seconds": 6.00887745,
+          "messages_per_second": 225490.37008568048,
+          "p50_ms": 4.250679,
+          "p95_ms": 7.645506,
+          "p99_ms": 9.917404,
+          "max_ms": 39.506538,
+          "errors": 0,
+          "operations": 1354944,
+          "operations_per_second": 225490.37008568048
+        },
+        {
+          "app": "rust",
+          "sampling_seconds": 6.014136474113911,
+          "server_cpu_seconds": 11.17,
+          "server_user_cpu_seconds": 6.550000000000001,
+          "server_system_cpu_seconds": 4.62,
+          "thread_counters": {
+            "voluntary": 5792,
+            "involuntary": 5621,
+            "run_ns": 11163651042,
+            "runqueue_ns": 655855389,
+            "timeslices": 11413
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 185.7290742915129,
+          "client_cpu_percent": 245.58804183398792,
+          "cpu_us_per_operation": 8.9940222362505,
+          "mean_rss_mib": 19.546875,
+          "peak_rss_mib": 19.546875,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 24.700000000186265,
+          "controller_cpu_seconds": 0.480000000000004,
+          "measured_client_cpu_seconds": 14.77,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1241936,
+          "elapsed_seconds": 6.008052544,
+          "messages_per_second": 206711.90721197528,
+          "p50_ms": 4.654153,
+          "p95_ms": 8.40027,
+          "p99_ms": 11.418295,
+          "max_ms": 29.489049,
+          "errors": 0,
+          "operations": 1241936,
+          "operations_per_second": 206711.90721197528
+        }
+      ]
+    },
+    {
+      "trial": 8,
+      "case": {
+        "name": "ws_32_pairs_1k",
+        "kind": "ws",
+        "pairs": 32,
+        "bytes": 1024,
+        "window": 8
+      },
+      "attempt": 1,
+      "order": [
+        "rust",
+        "v-reactor-pooled"
+      ],
+      "retained": true,
+      "rows": [
+        {
+          "app": "rust",
+          "sampling_seconds": 6.007255123928189,
+          "server_cpu_seconds": 10.93,
+          "server_user_cpu_seconds": 6.67,
+          "server_system_cpu_seconds": 4.26,
+          "thread_counters": {
+            "voluntary": 7309,
+            "involuntary": 4123,
+            "run_ns": 10929998470,
+            "runqueue_ns": 748891162,
+            "timeslices": 11431
+          },
+          "thread_counter_coverage": {
+            "start": 4,
+            "end": 4,
+            "matched": 4
+          },
+          "server_cpu_percent": 181.94665907335045,
+          "client_cpu_percent": 233.88385727178172,
+          "cpu_us_per_operation": 10.846869591451117,
+          "mean_rss_mib": 12.759907670454545,
+          "peak_rss_mib": 12.91015625,
+          "peak_vms_mib": 203.1484375,
+          "peak_threads": 4,
+          "host_busy_cpu_seconds": 25.190000000409782,
+          "controller_cpu_seconds": 0.4799999999999969,
+          "measured_client_cpu_seconds": 14.05,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1007664,
+          "elapsed_seconds": 6.006198596,
+          "messages_per_second": 167770.6762262378,
+          "p50_ms": 1.301574,
+          "p95_ms": 2.557637,
+          "p99_ms": 4.041896,
+          "max_ms": 32.005475,
+          "errors": 0,
+          "operations": 1007664,
+          "operations_per_second": 167770.6762262378
+        },
+        {
+          "app": "v-reactor-pooled",
+          "sampling_seconds": 6.007699449080974,
+          "server_cpu_seconds": 10.43,
+          "server_user_cpu_seconds": 6.02,
+          "server_system_cpu_seconds": 4.41,
+          "thread_counters": {
+            "voluntary": 37769,
+            "involuntary": 8060,
+            "run_ns": 10428767245,
+            "runqueue_ns": 1043492651,
+            "timeslices": 45828
+          },
+          "thread_counter_coverage": {
+            "start": 10,
+            "end": 10,
+            "matched": 10
+          },
+          "server_cpu_percent": 173.61054906958645,
+          "client_cpu_percent": 250.17895997275983,
+          "cpu_us_per_operation": 9.38962909614692,
+          "mean_rss_mib": 49.06640625,
+          "peak_rss_mib": 49.06640625,
+          "peak_vms_mib": 181.1796875,
+          "peak_threads": 10,
+          "host_busy_cpu_seconds": 24.71999999973923,
+          "controller_cpu_seconds": 0.47999999999998977,
+          "measured_client_cpu_seconds": 15.030000000000001,
+          "background_cpu_seconds": 0.0,
+          "background_cpu_percent": 0.0,
+          "messages": 1110800,
+          "elapsed_seconds": 6.006813118,
+          "messages_per_second": 184923.34923345287,
+          "p50_ms": 1.15628,
+          "p95_ms": 2.799465,
+          "p99_ms": 4.197104,
+          "max_ms": 30.888865,
+          "errors": 0,
+          "operations": 1110800,
+          "operations_per_second": 184923.34923345287
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-10-06T10:50:49.016092+00:00",
+  "verified_messages": 44896135
+}
